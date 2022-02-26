@@ -1,0 +1,6 @@
+site_name: My API Docs
+site_url: https://lp-api-doc.com/
+nav:
+    - Home: index.md
+    - About: about.md
+theme: readthedocs
