@@ -35,7 +35,7 @@ PATCH
 - architecture: MVC - client/server en local
 
 - arborescence:
-![arbo](/img/Capture-arbo-se-cl.png)
+![arbo](../site/img/Capture-arbo-se-cl.PNG)
 
 - design pattern:
 
