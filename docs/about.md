@@ -1,5 +1,5 @@
 This is the documentation for the API made with nodejs  
-12/03/2022
+12/03/2022  
 mkdocs hosted on gh pages:  
 https://omnislashh.github.io/LPCodesiApiRestDoc/
 ***
@@ -35,7 +35,7 @@ PATCH
 - architecture: MVC - client/server en local
 
 - arborescence:
-![arbo](../site/img/Capture-arbo-se-cl.PNG)
+![arbo](Capture-arbo-se-cl.PNG)
 
 - design pattern:
 
