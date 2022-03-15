@@ -52,6 +52,8 @@
                 </ul>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -87,17 +89,56 @@
           <div role="main">
             <div class="section">
               
-                <p>This is the documentation for the API made with nodejs<br />
-12/03/2022<br />
+                <h2 id="this-is-the-documentation-for-the-api-made-with-nodejs-lpcodesi">This is the documentation for the API made with nodejs - LPCODESI</h2>
+<p>12/03/2022<br />
 mkdocs hosted on gh pages:<br />
-https://omnislashh.github.io/LPCodesiApiRestDoc/</p>
-<hr />
+https://omnislashh.github.io/LPCodesiApiRestDoc/
+to update, after pushing /docs</p>
+<pre><code>mkdocs gh-deploy
+</code></pre>
+<p>Author - Elie</p>
+<h2 id="application-programming-interface-restful">Application Programming Interface RESTful</h2>
 <ul>
 <li>
-<p>description: 
-//API REST avec express
-Administrer des joueurs et des équipes</p>
+<p>definition<br />
+https://www.redhat.com/en/topics/api/what-is-a-rest-api  </p>
 </li>
+<li>
+<p>further reading<br />
+https://www.redhat.com/en/topics/api/what-are-application-programming-interfaces  </p>
+</li>
+<li>
+<p>article en français<br />
+https://practicalprogramming.fr/api-rest  </p>
+</li>
+<li>
+<p>un exemple : l'API de wikipedia<br />
+https://www.mediawiki.org/wiki/API:Main_page  </p>
+</li>
+<li>
+<p>cours complet<br />
+https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web/6817216-identifiez-les-avantages-d-une-api-rest  </p>
+</li>
+<li>
+<p>autre article avec petit historique et contexte <br />
+https://www.data-transitionnumerique.com/api-rest/</p>
+</li>
+</ul>
+<h2 id="une-synthese-des-concepts-cles">Une synthèse des concepts clés :</h2>
+<pre><code>- client/server separation
+- stateless pas de sauvegarde de queries server
+- cache
+- système en couche
+- endpoints accessibles
+- sécurisé
+- http protocol
+- interface uniforme
+</code></pre>
+<hr />
+<h2 id="description">Description:</h2>
+<p>//API REST avec <strong>expressjs</strong><br />
+Administrer des joueurs et des équipes</p>
+<ul>
 <li>
 <p>repository: https://github.com/omnislashh/ser-cli-app.git</p>
 </li>
@@ -105,10 +146,10 @@ Administrer des joueurs et des équipes</p>
 <p>outils: Windows10, Wamp, nodejs, expressjs, postman</p>
 </li>
 <li>
-<p>utilisation: CRUD</p>
+<p>utilisation: <strong>CRUD</strong> - CREATE, READ, UPDATE, DELETE</p>
 </li>
 <li>
-<p>endpoints uri:
+<p>routing - endpoints uri:
 /persons
 /person/:id
 /data/:options
@@ -116,56 +157,77 @@ Administrer des joueurs et des équipes</p>
 /personupdate
 /persondelete</p>
 </li>
-<li>
-<p>endpoints exemples:
-http://localhost:3000/personupdate?id=35&amp;name=updated&amp;prenom=prenomUp&amp;date=1980-05-06</p>
-</li>
-<li>
-<p>verbes http et justifications:
-Verbes utilisés:
-PUT 
-PATCH</p>
-</li>
-<li>
-<p>codes utilisés: 201...</p>
-</li>
-<li>
-<p>architecture: MVC - client/server en local</p>
-</li>
-<li>
-<p>arborescence:
-<img alt="arbo" src="../Capture-arbo-se-cl.PNG" /></p>
-</li>
-<li>
-<p>design pattern:</p>
-</li>
-<li>
-<p>singleton pour se connecter une seule fois</p>
-</li>
+</ul>
+<hr />
+<h2 id="endpoints-exemples">Endpoints exemples:</h2>
+<p><em>personnes:</em><br />
+GET http://localhost:3000/persons<br />
+GET http://localhost:3000/persons/1<br />
+GET http://localhost:3000/personsfree  </p>
+<p>PATCH http://localhost:3000/personupdate?id=35&amp;name=updated&amp;prenom=prenomUp&amp;date=1980-05-06<br />
+PATCH http://localhost:3000/personupdate?id=2&amp;name=updatedJustName<br />
+PATCH http://localhost:3000/personupdate?id=2&amp;name=&amp;prenom=updatedJustPrenom<br />
+PATCH http://localhost:3000/personupdate?id=2&amp;name=&amp;prenom=&amp;date=1980-08-06  </p>
+<p>PUT http://localhost:3000/personcreation?name=Casillas&amp;prenom=Iker&amp;date=1981-05-20<br />
+DELETE http://localhost:3000/persondelete?id=6  </p>
+<p><em>departements:</em><br />
+GET http://localhost:3000/departements<br />
+GET http://localhost:3000/departement/1<br />
+GET http://localhost:3000/departementsfree  </p>
+<p>PUT http://localhost:3000/departementcreation?nom=France  </p>
+<p>PATCH http://localhost:3000/departementupdate?id=3&amp;nom=Olympique-de-Marseille  </p>
+<p>DELETE http://localhost:3000/departementdelete?id=3  </p>
+<hr />
+<h2 id="verbes-http-utilises-et-justifications">Verbes http utilisés et justifications :</h2>
+<p><strong>PUT</strong> plus naturel pour les créations et mises à jour complètes (URI ressource ressource créée = URI de la requête PUT)<br />
+<strong>PATCH</strong> pour les mises à jour partielles<br />
+<strong>POST</strong> en dernier recours (contrainte à la création d'une ressource liée avec Header Location)</p>
+<ul>
+<li>codes utilisés: <br />
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</li>
+</ul>
+<hr />
+<h2 id="architecture">Architecture:</h2>
+<p><strong>MVC</strong> - client/server en local</p>
+<hr />
+<h2 id="arborescence">Arborescence:</h2>
+<p><img alt="arbo" src="../Capture-arbo-se-cl.PNG" /></p>
+<hr />
+<h2 id="design-pattern">Design pattern:</h2>
+<ol>
+<li>singleton pour se connecter une seule fois</li>
 <li>choix design pattern pour Data Access Object:
 table data getaway design pattern vs active record</li>
-</ul>
+</ol>
 <p>avantage table data getaway:
 separe la couche metier de la couche persistante</p>
-<p>//class Dao implemente le Dal (Data Access Layer)
-//js pas de classe abstraite
-// classe abstraite<br />
-// empecher la creation d'objet + lister les methodes qui doivent etre implantée + declencher des erreurs 
-// en js
-// 1 - code heroes</p>
-<p>// 2 - babel - pas en prod</p>
-<p>// 3 - use typescript
-- bdd:</p>
+<hr />
+<h2 id="notes-additionnelles">Notes additionnelles :</h2>
+<p>// la class Dao implemente le Dal (Data Access Layer)<br />
+// en javascript (syntaxe : CommonJS) : pas de classe abstraite </p>
+<p>// classe abstraite definition : <br />
+// empecher la creation d'objet + lister les methodes qui doivent etre implantée + declencher des erreurs  </p>
+<p>// solutions :<br />
+// 1 - code heroes https://www.codeheroes.fr/2017/11/08/js-classes-abstraites-et-interfaces/</p>
+<p>// 2 - babel - pas conseillé en prod</p>
+<p>// 3 - use typescript<br />
+- bdd: <br />
+// scripts sql in /data/BDD</p>
 <ul>
-<li>jwt:
-ajout d'une couche de securité/connexion user avec le bearer token</li>
+<li>JWT: <br />
+POST http://localhost:3000/api/login<br />
+GET http://localhost:3000/api/me<br />
+ajout d'une couche de securité/connexion user avec le bearer token  </li>
 </ul>
-<p>// https://www.wawasensei.dev/tuto/tuto-authentification-refresh-json-web-token-en-nodejs-avec-express</p>
-<p>//stateless: sans stocker d'infos user
-//statefull: avec stockage de session
-//connexion s'appuie sur 2 tokens: l'un qui repose sur l'autre
-//deconnexion: lorsque le premier périme, le second est invalide, pas besoin de faire un logout
-//à voir: refresh de token</p>
+<p>https://www.wawasensei.dev/tuto/tuto-authentification-refresh-json-web-token-en-nodejs-avec-express</p>
+<p>// stateless: sans stocker d'infos user<br />
+// statefull: avec stockage de session<br />
+// connexion s'appuie sur 2 tokens: l'un qui repose sur l'autre<br />
+// deconnexion: lorsque le premier périme, le second est invalide, pas besoin de faire un logout  </p>
+<hr />
+<h2 id="ameliorations-prevues">Améliorations prévues :</h2>
+<p>admin des associations via api endpoints<br />
+// <strong>à voir</strong> : refresh de token</p>
               
             </div>
           </div>
